@@ -17,12 +17,7 @@ export const reducer = (state, action) => {
             return newState
 
         case "CLEAR_COMPLETED":
-            for (let i in state) {
-                if (!state[i].completed){
-                    newState.push(state[i])
-                }
-            }
-            return newState
+            return state.filter((item)=>!item.completed)
     
         default:
             return state
