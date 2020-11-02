@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Form value={value} setValue={setValue} add={addTodo} clear={clearCompleted}/>
-      <List toggleComplete={toggleComplete} state={state}/>
+        <List toggleComplete={toggleComplete} state={state}/>
     </div>
   );
 }
