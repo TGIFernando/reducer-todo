@@ -1,5 +1,3 @@
-import React, { useState, useReducer} from 'react'
-
 export const reducer = (state, action) => {
     let newState = []
     switch(action.type){
@@ -16,7 +14,6 @@ export const reducer = (state, action) => {
             let index = Number(action.payload)
             newState = [... state]
             newState[index] = {... newState[index], completed: !newState[index].completed}
-            console.log(newState[index])
             return newState
 
         case "CLEAR_COMPLETED":

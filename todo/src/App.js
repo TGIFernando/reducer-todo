@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useReducer} from 'react'
+import React, { useState, useReducer } from 'react'
 import './App.css';
 import { reducer, initailState } from './reducers/reducer'
 import Form from './components/form'
 import List from './components/List'
+import { toggle, add, clear} from './components/reducerNames'
 
 function App() {
 
@@ -12,31 +13,24 @@ function App() {
   function toggleComplete(e){
     for (let i in state){
       if (state[i].item === e.target.textContent){
-        dispatch({type: 'TOGGLE_COMPLETED', payload: i})
+        dispatch({type: toggle, payload: i})
       }
-      console.log(state[i])
     }
   }
 
   function addTodo(title){
-    dispatch({type: 'ADD_TODO', payload: title})
+    dispatch({type: add, payload: title})
     setValue('')
   }
 
-  function clear (){
-    dispatch({type: 'CLEAR_COMPLETED'})
+  function clearCompleted (){
+    dispatch({type: clear})
   }
-
-  useEffect(()=>{
-    console.log(state)
-    console.log(value)
-  },[state, value])
-
 
   return (
     <div className="App">
-      <Form value={value} setValue={setValue} add={addTodo} clear={clear}/>
-      <List toggle={toggleComplete} state={state}/>
+      <Form value={value} setValue={setValue} add={addTodo} clear={clearCompleted}/>
+      <List toggleComplete={toggleComplete} state={state}/>
     </div>
   );
 }

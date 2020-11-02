@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export default function Form(props){
     const onChange = e => {
         props.setValue(e.target.value)
     }
-
-    useEffect(()=>{
-        console.log('value: ',props.value)
-    },[props.value])
 
     return(
         <div>
